@@ -1,5 +1,6 @@
 const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     entry: "./src/index.js", // 入口
@@ -16,7 +17,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html', 
             filename: 'index.html'
-        })
+        }),
+        new VueLoaderPlugin()
     ],
     module: {
         rules: [
@@ -89,6 +91,10 @@ module.exports = {
                 }
             }
           },
+          {
+            test: /\.vue$/,
+            loader: 'vue-loader'
+          }
         ]
     }
 }

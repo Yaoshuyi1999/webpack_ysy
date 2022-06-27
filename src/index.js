@@ -23,3 +23,5 @@ class App {
   }
   
   console.log(App.a)
+
+import './app.vue'
