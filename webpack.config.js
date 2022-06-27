@@ -28,15 +28,30 @@ module.exports = {
             test: /\.less$/,
             use: ['style-loader', 'css-loader', 'less-loader'],
           },
-          {//版本4的时候
+        //   {//版本4的时候
+        //     test: /\.(png|jpg|gif)$/i,
+        //     use: [{
+        //           loader: 'url-loader',
+        //           options: {
+        //             limit:8*1024,//limit限制
+        //           },
+        //         }],
+        //    }
+        {
             test: /\.(png|jpg|gif)$/i,
-            use: [{
-                  loader: 'url-loader',
-                  options: {
-                    limit:8*1024,//limit限制
-                  },
-                }],
-           }
+            // type: 'asset/resource',
+            // type:'asset/inline'
+            type:'asset',
+            parser: { // 解析器 规则
+              dataUrlCondition: { // dataUrl的情况
+                maxSize: 8 * 1024,
+                // maxSize 限制最大值
+              },
+            },
+            generator: {
+              filename: '[hash:6][ext]'
+            }
+          },
         ]
     }
 }
