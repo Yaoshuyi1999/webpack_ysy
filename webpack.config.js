@@ -9,7 +9,7 @@ module.exports = {
     },
     mode: 'development',
     devServer: {
-        port: 3000, // 端口号
+        port: 3001, // 端口号
         open: true
     },
     plugins: [
@@ -18,4 +18,12 @@ module.exports = {
             filename: 'index.html'
         })
     ],
+    module: {
+        rules: [
+          {
+            test: /\.css$/, 
+            use: [ "style-loader", "css-loader"]
+          }
+        ]
+    }
 }
