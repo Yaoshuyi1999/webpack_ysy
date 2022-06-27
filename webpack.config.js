@@ -78,7 +78,17 @@ module.exports = {
                 maxSize:1*1024,
               },
             }
-          }
+        },
+        {
+            test: /\.js$/,
+            exclude: /(node_modules)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
+            }
+          },
         ]
     }
 }
