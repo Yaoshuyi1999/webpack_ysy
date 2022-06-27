@@ -28,7 +28,7 @@ module.exports = {
             test: /\.less$/,
             use: ['style-loader', 'css-loader', 'less-loader'],
           },
-        //   {//版本4的时候
+        //   {//版本4的时候图片
         //     test: /\.(png|jpg|gif)$/i,
         //     use: [{
         //           loader: 'url-loader',
@@ -52,6 +52,21 @@ module.exports = {
               filename: '[hash:6][ext]'
             }
           },
+          {//版本4字体
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            use: [
+                {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 2 * 1024,
+                        // 配置输出的文件名
+                        name: '[name].[ext]',
+                        // 配置输出的文件目录
+                        outputPath: "fonts/"
+                    }
+                }
+            ]
+          }
         ]
     }
 }
