@@ -1,4 +1,5 @@
 const path = require("path")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: "./src/index.js", // 入口
@@ -10,5 +11,11 @@ module.exports = {
     devServer: {
         port: 3000, // 端口号
         open: true
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html', 
+            filename: 'index.html'
+        })
+    ],
 }
