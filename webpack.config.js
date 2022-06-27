@@ -28,6 +28,15 @@ module.exports = {
             test: /\.less$/,
             use: ['style-loader', 'css-loader', 'less-loader'],
           },
+          {//版本4的时候
+            test: /\.(png|jpg|gif)$/i,
+            use: [{
+                  loader: 'url-loader',
+                  options: {
+                    limit:8*1024,//limit限制
+                  },
+                }],
+           }
         ]
     }
 }
